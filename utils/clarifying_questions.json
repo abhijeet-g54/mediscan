@@ -1,0 +1,169 @@
+{
+    "default_questions": [
+        {
+            "id": "onset_type",
+            "question": "Did the symptom start suddenly or gradually? (sudden/gradual)"
+        },
+        {
+            "id": "fever_presence_now",
+            "question": "Do you currently have a fever (measured or felt)? (yes/no)"
+        },
+        {
+            "id": "cough_type",
+            "question": "Is your cough productive (with phlegm) or dry? (productive/dry)"
+        },
+        {
+            "id": "breath_at_rest",
+            "question": "Do you experience breathlessness while resting? (yes/no)"
+        },
+        {
+            "id": "chest_character",
+            "question": "If you have chest pain, is it sharp, pressure-like, or burning? (sharp/pressure/burning)"
+        },
+        {
+            "id": "abdominal_location",
+            "question": "Where exactly is the abdominal pain? (upper-right/upper-left/lower-right/lower-left/central)"
+        },
+        {
+            "id": "neurological_signs",
+            "question": "Do you have confusion, severe headache with neck stiffness, or fainting? (yes/no)"
+        },
+        {
+            "id": "recent_travel",
+            "question": "Have you traveled recently or been exposed to someone sick? (yes/no)"
+        },
+        {
+            "id": "rash_presence",
+            "question": "Do you currently have any skin rash or unusual marks? (yes/no)"
+        },
+        {
+            "id": "pain_intensity",
+            "question": "On a scale of 1 to 10, how severe is your pain?"
+        }
+    ],
+    "pair_questions": {
+        "Influenza|Common_Cold": {
+            "question": "Do you have muscle pain or body ache along with fever and cough? (yes/no)"
+        },
+        "Dengue|Malaria": {
+            "question": "Is your fever accompanied by severe joint pain or chills? (yes/no)"
+        },
+        "Typhoid|Gastroenteritis": {
+            "question": "Have you had prolonged fever with abdominal discomfort or diarrhea? (yes/no)"
+        },
+        "Hepatitis|Gallstones": {
+            "question": "Is the pain mainly in the upper-right side of your abdomen? (yes/no)"
+        },
+        "Gastritis|Gastroenteritis": {
+            "question": "Do you have nausea or vomiting along with abdominal pain? (yes/no)"
+        },
+        "Myocardial_Infarction|Angina": {
+            "question": "Is your chest pain accompanied by sweating, nausea, or pain radiating to the left arm? (yes/no)"
+        },
+        "Pneumonia|Bronchitis": {
+            "question": "Do you have fever with a productive (phlegm) cough? (yes/no)"
+        },
+        "Migraine|Tension_Headache": {
+            "question": "Is the headache one-sided and sensitive to light or noise? (yes/no)"
+        },
+        "Appendicitis|Gastroenteritis": {
+            "question": "Did the abdominal pain start near the navel and move to the lower-right side? (yes/no)"
+        },
+        "Asthma|COPD": {
+            "question": "Do you experience wheezing or difficulty breathing that worsens at night? (yes/no)"
+        },
+        "Diabetes|Hypoglycemia": {
+            "question": "Do you experience excessive thirst or sweating with dizziness? (yes/no)"
+        },
+        "Hypertension|Anxiety": {
+            "question": "Do you have frequent headaches or palpitations when stressed? (yes/no)"
+        },
+        "Tuberculosis|Pneumonia": {
+            "question": "Have you been coughing for more than 2 weeks or coughing blood? (yes/no)"
+        },
+        "COVID19|Influenza": {
+            "question": "Have you experienced loss of smell or taste recently? (yes/no)"
+        },
+        "Kidney_Stone|UTI": {
+            "question": "Do you feel severe pain on one side of your lower back with painful urination? (yes/no)"
+        },
+        "Malaria|Typhoid": {
+            "question": "Do you experience alternating high fever and chills? (yes/no)"
+        },
+        "Sinusitis|Migraine": {
+            "question": "Does your headache worsen when you bend forward or in the morning? (yes/no)"
+        },
+        "Chickenpox|Measles": {
+            "question": "Do you have an itchy rash that started on your trunk and spread to limbs? (yes/no)"
+        },
+        "Depression|Anxiety": {
+            "question": "Do you feel persistent sadness or worry that affects daily life? (yes/no)"
+        },
+        "Gastric_Ulcer|Acid_Reflux": {
+            "question": "Does your stomach pain increase after eating or at night? (yes/no)"
+        },
+        "Otitis_Media|Sinusitis": {
+            "question": "Do you feel ear fullness or facial pressure with nasal blockage? (yes/no)"
+        },
+        "Conjunctivitis|Allergy": {
+            "question": "Are your eyes red with watery discharge and itching? (yes/no)"
+        },
+        "Malaria|Dengue": {
+            "question": "Do you have high fever with chills or joint and eye pain? (yes/no)"
+        },
+        "Bronchial_Asthma|Allergy": {
+            "question": "Do your symptoms get worse after exposure to dust or cold air? (yes/no)"
+        },
+        "Epilepsy|Syncope": {
+            "question": "Did you lose consciousness with body stiffness or jerking? (yes/no)"
+        },
+        "Anemia|Hypothyroidism": {
+            "question": "Do you feel persistent fatigue and pale skin? (yes/no)"
+        },
+        "Migraine|Cluster_Headache": {
+            "question": "Does your headache occur in repeated attacks on one side of the head? (yes/no)"
+        },
+        "UTI|Pyelonephritis": {
+            "question": "Do you have fever, back pain, and painful urination? (yes/no)"
+        },
+        "Pneumonia|COVID19": {
+            "question": "Do you have dry cough, fever, and shortness of breath? (yes/no)"
+        },
+        "Food_Poisoning|Gastroenteritis": {
+            "question": "Did the symptoms start after eating outside food? (yes/no)"
+        },
+        "Hepatitis|Pancreatitis": {
+            "question": "Do you have yellowing of eyes and upper abdominal pain radiating to the back? (yes/no)"
+        },
+        "Stroke|Migraine": {
+            "question": "Do you have weakness on one side or sudden vision problems? (yes/no)"
+        },
+        "Arthritis|Osteoporosis": {
+            "question": "Do you have joint pain that increases with movement or stiffness in the morning? (yes/no)"
+        },
+        "Hypothyroidism|Depression": {
+            "question": "Do you feel tired, gain weight, or have dry skin and low mood? (yes/no)"
+        },
+        "Anxiety|Panic_Attack": {
+            "question": "Do you experience chest tightness, trembling, or shortness of breath suddenly? (yes/no)"
+        },
+        "UTI|Kidney_Infection": {
+            "question": "Do you have fever, flank pain, or burning during urination? (yes/no)"
+        },
+        "Gallstones|Pancreatitis": {
+            "question": "Does your abdominal pain worsen after fatty meals? (yes/no)"
+        },
+        "Sinusitis|Allergic_Rhinitis": {
+            "question": "Do you have sneezing, nasal congestion, and facial pain? (yes/no)"
+        },
+        "Liver_Cirrhosis|Hepatitis": {
+            "question": "Have you noticed yellow eyes or swelling in the abdomen or legs? (yes/no)"
+        },
+        "Pneumonia|Tuberculosis": {
+            "question": "Do you have chronic cough with sputum or blood? (yes/no)"
+        },
+        "Diabetes|Thyroid_Disorder": {
+            "question": "Have you experienced weight loss, fatigue, or excessive urination? (yes/no)"
+        }
+    }
+}
