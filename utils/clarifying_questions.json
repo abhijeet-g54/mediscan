@@ -1,169 +1,1064 @@
 {
-    "default_questions": [
-        {
-            "id": "onset_type",
-            "question": "Did the symptom start suddenly or gradually? (sudden/gradual)"
-        },
-        {
-            "id": "fever_presence_now",
-            "question": "Do you currently have a fever (measured or felt)? (yes/no)"
-        },
-        {
-            "id": "cough_type",
-            "question": "Is your cough productive (with phlegm) or dry? (productive/dry)"
-        },
-        {
-            "id": "breath_at_rest",
-            "question": "Do you experience breathlessness while resting? (yes/no)"
-        },
-        {
-            "id": "chest_character",
-            "question": "If you have chest pain, is it sharp, pressure-like, or burning? (sharp/pressure/burning)"
-        },
-        {
-            "id": "abdominal_location",
-            "question": "Where exactly is the abdominal pain? (upper-right/upper-left/lower-right/lower-left/central)"
-        },
-        {
-            "id": "neurological_signs",
-            "question": "Do you have confusion, severe headache with neck stiffness, or fainting? (yes/no)"
-        },
-        {
-            "id": "recent_travel",
-            "question": "Have you traveled recently or been exposed to someone sick? (yes/no)"
-        },
-        {
-            "id": "rash_presence",
-            "question": "Do you currently have any skin rash or unusual marks? (yes/no)"
-        },
-        {
-            "id": "pain_intensity",
-            "question": "On a scale of 1 to 10, how severe is your pain?"
-        }
-    ],
-    "pair_questions": {
-        "Influenza|Common_Cold": {
-            "question": "Do you have muscle pain or body ache along with fever and cough? (yes/no)"
-        },
-        "Dengue|Malaria": {
-            "question": "Is your fever accompanied by severe joint pain or chills? (yes/no)"
-        },
-        "Typhoid|Gastroenteritis": {
-            "question": "Have you had prolonged fever with abdominal discomfort or diarrhea? (yes/no)"
-        },
-        "Hepatitis|Gallstones": {
-            "question": "Is the pain mainly in the upper-right side of your abdomen? (yes/no)"
-        },
-        "Gastritis|Gastroenteritis": {
-            "question": "Do you have nausea or vomiting along with abdominal pain? (yes/no)"
-        },
-        "Myocardial_Infarction|Angina": {
-            "question": "Is your chest pain accompanied by sweating, nausea, or pain radiating to the left arm? (yes/no)"
-        },
-        "Pneumonia|Bronchitis": {
-            "question": "Do you have fever with a productive (phlegm) cough? (yes/no)"
-        },
-        "Migraine|Tension_Headache": {
-            "question": "Is the headache one-sided and sensitive to light or noise? (yes/no)"
-        },
-        "Appendicitis|Gastroenteritis": {
-            "question": "Did the abdominal pain start near the navel and move to the lower-right side? (yes/no)"
-        },
-        "Asthma|COPD": {
-            "question": "Do you experience wheezing or difficulty breathing that worsens at night? (yes/no)"
-        },
-        "Diabetes|Hypoglycemia": {
-            "question": "Do you experience excessive thirst or sweating with dizziness? (yes/no)"
-        },
-        "Hypertension|Anxiety": {
-            "question": "Do you have frequent headaches or palpitations when stressed? (yes/no)"
-        },
-        "Tuberculosis|Pneumonia": {
-            "question": "Have you been coughing for more than 2 weeks or coughing blood? (yes/no)"
-        },
-        "COVID19|Influenza": {
-            "question": "Have you experienced loss of smell or taste recently? (yes/no)"
-        },
-        "Kidney_Stone|UTI": {
-            "question": "Do you feel severe pain on one side of your lower back with painful urination? (yes/no)"
-        },
-        "Malaria|Typhoid": {
-            "question": "Do you experience alternating high fever and chills? (yes/no)"
-        },
-        "Sinusitis|Migraine": {
-            "question": "Does your headache worsen when you bend forward or in the morning? (yes/no)"
-        },
-        "Chickenpox|Measles": {
-            "question": "Do you have an itchy rash that started on your trunk and spread to limbs? (yes/no)"
-        },
-        "Depression|Anxiety": {
-            "question": "Do you feel persistent sadness or worry that affects daily life? (yes/no)"
-        },
-        "Gastric_Ulcer|Acid_Reflux": {
-            "question": "Does your stomach pain increase after eating or at night? (yes/no)"
-        },
-        "Otitis_Media|Sinusitis": {
-            "question": "Do you feel ear fullness or facial pressure with nasal blockage? (yes/no)"
-        },
-        "Conjunctivitis|Allergy": {
-            "question": "Are your eyes red with watery discharge and itching? (yes/no)"
-        },
-        "Malaria|Dengue": {
-            "question": "Do you have high fever with chills or joint and eye pain? (yes/no)"
-        },
-        "Bronchial_Asthma|Allergy": {
-            "question": "Do your symptoms get worse after exposure to dust or cold air? (yes/no)"
-        },
-        "Epilepsy|Syncope": {
-            "question": "Did you lose consciousness with body stiffness or jerking? (yes/no)"
-        },
-        "Anemia|Hypothyroidism": {
-            "question": "Do you feel persistent fatigue and pale skin? (yes/no)"
-        },
-        "Migraine|Cluster_Headache": {
-            "question": "Does your headache occur in repeated attacks on one side of the head? (yes/no)"
-        },
-        "UTI|Pyelonephritis": {
-            "question": "Do you have fever, back pain, and painful urination? (yes/no)"
-        },
-        "Pneumonia|COVID19": {
-            "question": "Do you have dry cough, fever, and shortness of breath? (yes/no)"
-        },
-        "Food_Poisoning|Gastroenteritis": {
-            "question": "Did the symptoms start after eating outside food? (yes/no)"
-        },
-        "Hepatitis|Pancreatitis": {
-            "question": "Do you have yellowing of eyes and upper abdominal pain radiating to the back? (yes/no)"
-        },
-        "Stroke|Migraine": {
-            "question": "Do you have weakness on one side or sudden vision problems? (yes/no)"
-        },
-        "Arthritis|Osteoporosis": {
-            "question": "Do you have joint pain that increases with movement or stiffness in the morning? (yes/no)"
-        },
-        "Hypothyroidism|Depression": {
-            "question": "Do you feel tired, gain weight, or have dry skin and low mood? (yes/no)"
-        },
-        "Anxiety|Panic_Attack": {
-            "question": "Do you experience chest tightness, trembling, or shortness of breath suddenly? (yes/no)"
-        },
-        "UTI|Kidney_Infection": {
-            "question": "Do you have fever, flank pain, or burning during urination? (yes/no)"
-        },
-        "Gallstones|Pancreatitis": {
-            "question": "Does your abdominal pain worsen after fatty meals? (yes/no)"
-        },
-        "Sinusitis|Allergic_Rhinitis": {
-            "question": "Do you have sneezing, nasal congestion, and facial pain? (yes/no)"
-        },
-        "Liver_Cirrhosis|Hepatitis": {
-            "question": "Have you noticed yellow eyes or swelling in the abdomen or legs? (yes/no)"
-        },
-        "Pneumonia|Tuberculosis": {
-            "question": "Do you have chronic cough with sputum or blood? (yes/no)"
-        },
-        "Diabetes|Thyroid_Disorder": {
-            "question": "Have you experienced weight loss, fatigue, or excessive urination? (yes/no)"
-        }
-    }
+  "panic disorder": {
+    "key_symptoms": ["anxiety and nervousness", "palpitations", "shortness of breath", "restlessness", "insomnia"],
+    "extra_questions": [
+      "Do you experience sudden episodes of intense fear or panic?",
+      "Do these episodes happen even without an obvious trigger?",
+      "Do you feel trembling or shaking during these episodes?",
+      "Do you avoid places or situations because of fear of panic attacks?"
+    ]
+  },
+  "anxiety": {
+    "key_symptoms": ["anxiety and nervousness", "restlessness", "difficulty concentrating", "insomnia", "fatigue"],
+    "extra_questions": [
+      "Do you worry excessively about daily tasks or events?",
+      "Do you feel on edge or easily fatigued?",
+      "Do you experience muscle tension or headaches from stress?",
+      "Do you have trouble relaxing or sleeping due to worry?"
+    ]
+  },
+  "depression": {
+    "key_symptoms": ["depression", "fatigue", "loss of interest", "insomnia", "weight change"],
+    "extra_questions": [
+      "Do you feel hopeless or have lost interest in things you used to enjoy?",
+      "Do you feel unusually sad most of the day?",
+      "Have you noticed changes in your appetite or weight?",
+      "Do you feel tired even after adequate rest?"
+    ]
+  },
+  "postpartum depression": {
+    "key_symptoms": ["depression", "fatigue", "insomnia", "emotional symptoms", "loss of interest"],
+    "extra_questions": [
+      "Did these symptoms start after giving birth?",
+      "Do you feel detached from your baby or have feelings of guilt?",
+      "Do you experience excessive worry about your baby's health?",
+      "Do you have difficulty bonding with your baby?"
+    ]
+  },
+  "bipolar disorder": {
+    "key_symptoms": ["depression", "increased energy", "insomnia", "irritability", "racing thoughts"],
+    "extra_questions": [
+      "Have you experienced periods of extremely elevated mood or energy?",
+      "During these times, do you sleep less than usual without feeling tired?",
+      "Do you engage in risky behaviors during high-energy periods?",
+      "Do you experience sudden mood swings between depression and mania?"
+    ]
+  },
+  "schizophrenia": {
+    "key_symptoms": ["delusions or hallucinations", "social withdrawal", "disorganized thinking", "emotional symptoms", "disturbance of memory"],
+    "extra_questions": [
+      "Do you hear voices or see things that others do not?",
+      "Do you feel suspicious or believe others are plotting against you?",
+      "Do you have difficulty organizing your thoughts or speech?",
+      "Do you withdraw from social interactions or daily activities?"
+    ]
+  },
+  "adhd": {
+    "key_symptoms": ["difficulty concentrating", "restlessness", "impulsivity", "forgetfulness", "difficulty organizing"],
+    "extra_questions": [
+      "Do you often have trouble finishing tasks or following instructions?",
+      "Do you feel restless or fidgety frequently?",
+      "Do you interrupt others or have difficulty waiting your turn?",
+      "Do you lose things necessary for tasks or activities often?"
+    ]
+  },
+  "ocd": {
+    "key_symptoms": ["obsessions", "compulsions", "anxiety", "repetitive thoughts", "rituals"],
+    "extra_questions": [
+      "Do you feel compelled to repeat certain actions or thoughts?",
+      "Do these behaviors interfere with your daily life?",
+      "Do you have intrusive thoughts that cause anxiety?",
+      "Do you perform rituals to reduce discomfort or prevent harm?"
+    ]
+  },
+  "tourette syndrome": {
+    "key_symptoms": ["involuntary movements", "tics", "vocal tics", "abnormal involuntary movements", "repetitive movements"],
+    "extra_questions": [
+      "Do you make sudden sounds or movements you cannot control?",
+      "Do these tics interfere with daily activities?",
+      "Do your tics change in frequency or intensity over time?",
+      "Do you feel an urge before performing a tic?"
+    ]
+  },
+  "epilepsy": {
+    "key_symptoms": ["seizures", "loss of consciousness", "muscle spasms", "confusion", "focal weakness"],
+    "extra_questions": [
+      "Do you experience sudden, uncontrolled episodes of shaking?",
+      "Do you ever stare blankly or lose awareness for a short period?",
+      "Do you have warning signs or auras before a seizure?",
+      "Have you injured yourself during a seizure in the past?"
+    ]
+  },
+  "parkinson disease": {
+    "key_symptoms": ["tremor", "rigidity", "slowness of movement", "muscle stiffness", "postural instability"],
+    "extra_questions": [
+      "Do you have trembling or shaking in your hands at rest?",
+      "Do you find it difficult to start movements or walk steadily?",
+      "Do you notice stiffness or slowness in your arms or legs?",
+      "Have you experienced balance problems or frequent falls?"
+    ]
+  },
+  "stroke": {
+    "key_symptoms": ["sudden numbness or weakness", "facial drooping", "arm or leg weakness", "difficulty speaking", "vision problems"],
+    "extra_questions": [
+      "Did symptoms start suddenly?",
+      "Do you experience slurred speech or trouble understanding language?",
+      "Do you have difficulty walking or maintaining balance?",
+      "Do you notice sudden severe headache or confusion?"
+    ]
+  },
+  "dementia": {
+    "key_symptoms": ["memory loss", "difficulty thinking", "confusion", "disorientation", "emotional changes"],
+    "extra_questions": [
+      "Do you forget recent events or conversations frequently?",
+      "Do you have trouble performing familiar tasks?",
+      "Do you experience mood swings or personality changes?",
+      "Do you get lost in familiar places?"
+    ]
+  },
+  "concussion": {
+    "key_symptoms": ["headache", "confusion", "dizziness", "nausea", "sensitivity to light or noise"],
+    "extra_questions": [
+      "Have you recently experienced a head injury?",
+      "Do you feel dazed or have trouble remembering events after the injury?",
+      "Do you experience blurred vision or ringing in the ears?",
+      "Do you feel fatigued or sleepy more than usual?"
+    ]
+  },
+  "migraine": {
+    "key_symptoms": ["headache", "nausea", "vomiting", "sensitivity to light", "visual disturbances"],
+    "extra_questions": [
+      "Do headaches occur on one side of the head?",
+      "Do you experience throbbing or pulsating pain?",
+      "Do visual changes or aura precede the headache?",
+      "Do stress or certain foods trigger your headaches?"
+    ]
+  },
+  "head injury": {
+    "key_symptoms": ["headache", "dizziness", "confusion", "nausea", "loss of consciousness"],
+    "extra_questions": [
+      "Have you recently sustained trauma to the head?",
+      "Do you experience persistent nausea or vomiting?",
+      "Do you have memory gaps related to the injury?",
+      "Do you notice swelling or bruising at the injury site?"
+    ]
+  },
+  "coronary atherosclerosis": {
+    "key_symptoms": ["chest tightness", "shortness of breath", "palpitations", "fatigue", "dizziness"],
+    "extra_questions": [
+      "Do you experience chest pain during exertion?",
+      "Do you have episodes of lightheadedness or fainting?",
+      "Do you notice swelling in your legs or ankles?",
+      "Do you have a history of high cholesterol or hypertension?"
+    ]
+  },
+  "heart attack": {
+    "key_symptoms": ["chest pain", "shortness of breath", "sweating", "nausea", "pain radiating to arm or jaw"],
+    "extra_questions": [
+      "Did chest pain start suddenly and persist?",
+      "Do you feel pressure, squeezing, or heaviness in your chest?",
+      "Do you experience dizziness, fainting, or palpitations?",
+      "Do you have risk factors like smoking, diabetes, or high blood pressure?"
+    ]
+  },
+  "heart failure": {
+    "key_symptoms": ["shortness of breath", "fatigue", "swelling of legs", "rapid heartbeat", "cough with frothy sputum"],
+    "extra_questions": [
+      "Do you get easily exhausted during normal activity?",
+      "Do you experience swelling in feet, ankles, or abdomen?",
+      "Do you wake up at night short of breath?",
+      "Do you notice persistent coughing or wheezing?"
+    ]
+  },
+  "atrial fibrillation": {
+    "key_symptoms": ["irregular heartbeat", "palpitations", "fatigue", "shortness of breath", "dizziness"],
+    "extra_questions": [
+      "Do you notice your heart racing or skipping beats?",
+      "Do you feel lightheaded or dizzy frequently?",
+      "Do you experience chest discomfort during palpitations?",
+      "Do you have history of hypertension or heart disease?"
+    ]
+  },
+  "atrial flutter": {
+    "key_symptoms": ["palpitations", "irregular heartbeat", "shortness of breath", "fatigue", "dizziness"],
+    "extra_questions": [
+      "Do you feel a rapid or fluttering heartbeat?",
+      "Do you experience lightheadedness or fainting?",
+      "Do you have chest discomfort or pressure?",
+      "Do you have a history of heart disease or high blood pressure?"
+    ]
+  },
+  "angina": {
+    "key_symptoms": ["chest pain", "chest tightness", "shortness of breath", "fatigue", "pain radiating to arm or jaw"],
+    "extra_questions": [
+      "Does the chest pain occur during physical activity or stress?",
+      "Do you feel pressure, squeezing, or heaviness in the chest?",
+      "Do you have nausea, sweating, or dizziness with chest pain?",
+      "Do you have known risk factors like high blood pressure or cholesterol?"
+    ]
+  },
+  "hocm": {
+    "key_symptoms": ["shortness of breath", "chest pain", "palpitations", "dizziness", "fainting"],
+    "extra_questions": [
+      "Do you faint during exertion or exercise?",
+      "Do you experience fatigue or difficulty breathing?",
+      "Do you have episodes of rapid or irregular heartbeat?",
+      "Do you have a family history of heart disease or sudden cardiac death?"
+    ]
+  },
+  "pulmonary hypertension": {
+    "key_symptoms": ["shortness of breath", "fatigue", "chest pain", "swelling of legs", "dizziness"],
+    "extra_questions": [
+      "Do you experience breathlessness during minimal activity?",
+      "Do you notice swelling in your ankles, legs, or abdomen?",
+      "Do you feel faint or dizzy frequently?",
+      "Do you have a history of lung disease or heart problems?"
+    ]
+  },
+  "mitral valve disease": {
+    "key_symptoms": ["shortness of breath", "fatigue", "palpitations", "swelling of legs", "chest pain"],
+    "extra_questions": [
+      "Do you experience irregular or rapid heartbeat?",
+      "Do you have difficulty breathing when lying down?",
+      "Do you notice swelling in feet or ankles?",
+      "Do you have a history of rheumatic fever or heart disease?"
+    ]
+  },
+  "aortic valve disease": {
+    "key_symptoms": ["chest pain", "shortness of breath", "fatigue", "palpitations", "fainting"],
+    "extra_questions": [
+      "Do you faint during activity or exertion?",
+      "Do you have chest tightness or pressure?",
+      "Do you experience dizziness or lightheadedness?",
+      "Do you have a history of heart murmurs or congenital heart defects?"
+    ]
+  },
+  "tricuspid valve disease": {
+    "key_symptoms": ["swelling of legs", "fatigue", "shortness of breath", "palpitations", "abdominal swelling"],
+    "extra_questions": [
+      "Do you notice swelling in your feet, legs, or abdomen?",
+      "Do you experience fatigue easily during routine activities?",
+      "Do you have irregular heartbeat or palpitations?",
+      "Do you have a history of heart disease or valve problems?"
+    ]
+  },
+  "asthma": {
+    "key_symptoms": ["shortness of breath", "wheezing", "cough", "chest tightness", "difficulty breathing at night or early morning"],
+    "extra_questions": [
+      "Do your symptoms get worse during exercise, cold air, or allergens?",
+      "Do you wake up at night due to coughing or breathlessness?",
+      "Do you have a history of allergies or eczema?",
+      "Do you experience frequent chest tightness or wheezing?"
+    ]
+  },
+  "copd": {
+    "key_symptoms": ["shortness of breath", "chronic cough", "sputum production", "wheezing", "fatigue"],
+    "extra_questions": [
+      "Do you have a history of smoking or exposure to pollutants?",
+      "Do you get frequent respiratory infections?",
+      "Do you experience difficulty breathing during physical activity?",
+      "Do you have swelling in ankles or feet?"
+    ]
+  },
+  "acute sinusitis": {
+    "key_symptoms": ["nasal congestion", "facial pain or pressure", "headache", "fever", "postnasal drip"],
+    "extra_questions": [
+      "Do you experience thick nasal discharge or green/yellow mucus?",
+      "Do you have pain around eyes, cheeks, or forehead?",
+      "Do your symptoms worsen when bending forward?",
+      "Do you have a recent history of cold or upper respiratory infection?"
+    ]
+  },
+  "chronic sinusitis": {
+    "key_symptoms": ["nasal congestion", "facial pressure", "postnasal drip", "reduced sense of smell", "cough"],
+    "extra_questions": [
+      "Do you have nasal obstruction for more than 12 weeks?",
+      "Do you experience recurrent sinus infections?",
+      "Do you have thick nasal discharge or facial pain?",
+      "Do you have bad breath or fatigue related to sinus issues?"
+    ]
+  },
+  "otitis media": {
+    "key_symptoms": ["ear pain", "fever", "hearing loss", "ear fullness", "irritability in children"],
+    "extra_questions": [
+      "Do you notice fluid draining from the ear?",
+      "Do symptoms worsen at night or during lying down?",
+      "Do you have recurrent ear infections?",
+      "Do you experience vertigo or imbalance?"
+    ]
+  },
+  "conjunctivitis": {
+    "key_symptoms": ["red eye", "eye discharge", "itchy eyes", "tearing", "eye irritation"],
+    "extra_questions": [
+      "Is the discharge watery, mucoid, or purulent?",
+      "Do you have sensitivity to light?",
+      "Do both eyes or only one eye show symptoms?",
+      "Have you been exposed to someone with eye infection?"
+    ]
+  },
+  "whooping cough": {
+    "key_symptoms": ["severe coughing fits", "whooping sound on inhalation", "vomiting after coughing", "runny nose", "fever"],
+    "extra_questions": [
+      "Are your coughing spells frequent and severe?",
+      "Do you experience the 'whoop' sound after coughing?",
+      "Have you been vaccinated against pertussis?",
+      "Do you have trouble sleeping due to coughing?"
+    ]
+  },
+  "pneumonia": {
+    "key_symptoms": ["fever", "cough", "shortness of breath", "chest pain", "fatigue"],
+    "extra_questions": [
+      "Do you have sputum production or coughing up phlegm?",
+      "Do you experience chills or sweating?",
+      "Do you have rapid or shallow breathing?",
+      "Do you have a history of recent respiratory infection?"
+    ]
+  },
+  "common cold": {
+    "key_symptoms": ["runny nose", "sore throat", "sneezing", "cough", "mild fever"],
+    "extra_questions": [
+      "Do your symptoms include mild fatigue or headache?",
+      "Do you have nasal congestion or watery eyes?",
+      "Have you been exposed to someone with cold symptoms recently?",
+      "Do your symptoms worsen in the evenings?"
+    ]
+  },
+  "croup": {
+    "key_symptoms": ["barking cough", "hoarseness", "stridor", "difficulty breathing", "fever"],
+    "extra_questions": [
+      "Do symptoms worsen at night or during cold air exposure?",
+      "Do you have noisy breathing when inhaling?",
+      "Is the cough harsh and barking in nature?",
+      "Do you have a history of respiratory infections in children?"
+    ]
+  },
+  "gerd": {
+    "key_symptoms": ["heartburn", "regurgitation", "chest pain", "difficulty swallowing", "acidic taste in mouth"],
+    "extra_questions": [
+      "Do your symptoms worsen after meals or when lying down?",
+      "Do you experience a sour or bitter taste in your mouth?",
+      "Do you have frequent belching or bloating?",
+      "Do you experience nighttime coughing or hoarseness?"
+    ]
+  },
+  "infectious gastroenteritis": {
+    "key_symptoms": ["diarrhea", "vomiting", "abdominal pain", "fever", "nausea"],
+    "extra_questions": [
+      "Have you recently eaten suspicious food or water?",
+      "Do you have dehydration symptoms like dry mouth or dizziness?",
+      "Do you have blood or mucus in your stool?",
+      "Do you experience cramping or abdominal discomfort?"
+    ]
+  },
+  "irritable bowel syndrome": {
+    "key_symptoms": ["abdominal pain", "bloating", "diarrhea", "constipation", "changes in stool consistency"],
+    "extra_questions": [
+      "Do your symptoms improve after passing stool?",
+      "Do you notice stress or diet triggers?",
+      "Do you experience mucus in stool?",
+      "Are symptoms chronic for more than 3 months?"
+    ]
+  },
+  "crohn disease": {
+    "key_symptoms": ["abdominal pain", "diarrhea", "weight loss", "fatigue", "blood in stool"],
+    "extra_questions": [
+      "Do you experience mouth sores or ulcers?",
+      "Do you have recurrent fevers or night sweats?",
+      "Do you notice anal fissures or fistulas?",
+      "Do symptoms flare up periodically with remissions?"
+    ]
+  },
+  "ulcerative colitis": {
+    "key_symptoms": ["diarrhea with blood", "abdominal pain", "urgency to defecate", "weight loss", "fatigue"],
+    "extra_questions": [
+      "Do you experience rectal bleeding or mucus?",
+      "Are your symptoms continuous in the colon?",
+      "Do you have nocturnal diarrhea?",
+      "Do you experience joint pain or eye inflammation?"
+    ]
+  },
+  "appendicitis": {
+    "key_symptoms": ["sharp abdominal pain", "nausea", "vomiting", "loss of appetite", "fever"],
+    "extra_questions": [
+      "Does the pain start around the navel and shift to the lower right abdomen?",
+      "Do you experience tenderness when pressing the abdomen?",
+      "Do you have rebound pain or abdominal rigidity?",
+      "Do you feel worsening pain with movement or coughing?"
+    ]
+  },
+  "cholecystitis": {
+    "key_symptoms": ["upper right abdominal pain", "nausea", "vomiting", "fever", "tenderness in right upper quadrant"],
+    "extra_questions": [
+      "Do you have pain after eating fatty meals?",
+      "Do you experience jaundice or yellowing of eyes?",
+      "Do you have pain radiating to the right shoulder or back?",
+      "Do you notice bloating or abdominal fullness?"
+    ]
+  },
+  "liver disease": {
+    "key_symptoms": ["jaundice", "fatigue", "abdominal swelling", "nausea", "vomiting"],
+    "extra_questions": [
+      "Do you experience dark urine or pale stools?",
+      "Do you have itching all over the body?",
+      "Do you notice easy bruising or bleeding?",
+      "Do you have a history of alcohol use or hepatitis exposure?"
+    ]
+  },
+  "cirrhosis": {
+    "key_symptoms": ["fatigue", "abdominal swelling", "jaundice", "nausea", "vomiting"],
+    "extra_questions": [
+      "Do you have confusion or difficulty thinking?",
+      "Do you experience itching or spider angiomas?",
+      "Do you notice swelling in legs or ankles?",
+      "Do you have a history of chronic liver disease or alcohol use?"
+    ]
+  },
+  "hepatitis": {
+    "key_symptoms": ["jaundice", "fatigue", "nausea", "vomiting", "abdominal pain"],
+    "extra_questions": [
+      "Do you have dark urine or pale stools?",
+      "Do you experience itching on your skin?",
+      "Do you have loss of appetite?",
+      "Do you have history of alcohol use or exposure to hepatitis virus?"
+    ]
+  },
+  "pancreatic cancer": {
+    "key_symptoms": ["upper abdominal pain", "weight loss", "jaundice", "loss of appetite", "back pain"],
+    "extra_questions": [
+      "Do you experience nausea or vomiting?",
+      "Do you have recent onset diabetes or glucose intolerance?",
+      "Do you notice dark urine or pale stools?",
+      "Do you have fatigue or weakness?"
+    ]
+  },
+  "acute pancreatitis": {
+    "key_symptoms": ["severe upper abdominal pain", "nausea", "vomiting", "fever", "abdominal tenderness"],
+    "extra_questions": [
+      "Does the pain radiate to your back?",
+      "Is the pain sudden in onset and severe?",
+      "Do you have history of gallstones or alcohol use?",
+      "Do you experience bloating or abdominal fullness?"
+    ]
+  },
+  "gastrointestinal hemorrhage": {
+    "key_symptoms": ["vomiting blood", "blood in stool", "abdominal pain", "dizziness", "fatigue"],
+    "extra_questions": [
+      "Do you have black or tarry stools?",
+      "Do you experience fainting or dizziness?",
+      "Do you have history of ulcers or liver disease?",
+      "Do you feel weakness or palpitations?"
+    ]
+  },
+  "chronic pain disorder": {
+    "key_symptoms": ["persistent pain", "fatigue", "sleep disturbances", "irritability", "reduced activity"],
+    "extra_questions": [
+      "Is your pain widespread or localized?",
+      "Do you notice worsening with activity or stress?",
+      "Do you experience stiffness or muscle tension?",
+      "Do you have a history of previous injuries?"
+    ]
+  },
+  "fibromyalgia": {
+    "key_symptoms": ["widespread pain", "fatigue", "sleep disturbances", "cognitive difficulties", "stiffness"],
+    "extra_questions": [
+      "Do you have tender points on your body?",
+      "Do your symptoms worsen in the morning or evening?",
+      "Do you experience headaches or irritable bowel symptoms?",
+      "Do you have anxiety or depression associated with your pain?"
+    ]
+  },
+  "osteoarthritis": {
+    "key_symptoms": ["joint pain", "stiffness", "swelling", "reduced mobility", "crepitus in joints"],
+    "extra_questions": [
+      "Is the pain worse after activity or at the end of the day?",
+      "Do you experience joint swelling or warmth?",
+      "Are specific joints affected, such as knees or hands?",
+      "Do you have difficulty performing daily activities?"
+    ]
+  },
+  "rheumatoid arthritis": {
+    "key_symptoms": ["joint pain", "swelling", "morning stiffness", "fatigue", "joint deformity"],
+    "extra_questions": [
+      "Are multiple joints affected symmetrically?",
+      "Do you have redness or warmth in the joints?",
+      "Do you experience prolonged stiffness in the morning?",
+      "Do you have family history of autoimmune disorders?"
+    ]
+  },
+  "ankylosing spondylitis": {
+    "key_symptoms": ["chronic back pain", "stiffness", "fatigue", "reduced spinal mobility", "morning stiffness"],
+    "extra_questions": [
+      "Is the back pain worse at rest and improves with activity?",
+      "Do you have hip or shoulder pain?",
+      "Do you experience eye inflammation or uveitis?",
+      "Do you have a family history of spondyloarthropathies?"
+    ]
+  },
+  "spondylitis": {
+    "key_symptoms": ["spinal pain", "stiffness", "limited mobility", "fatigue", "morning stiffness"],
+    "extra_questions": [
+      "Is the pain worse after inactivity?",
+      "Do you experience radiating pain to limbs?",
+      "Do you have associated joint swelling?",
+      "Do you have fatigue or general malaise?"
+    ]
+  },
+  "spondylosis": {
+    "key_symptoms": ["neck or back pain", "stiffness", "reduced mobility", "numbness", "weakness in limbs"],
+    "extra_questions": [
+      "Do you experience tingling or numbness in arms or legs?",
+      "Does the pain worsen with movement or lifting?",
+      "Do you have muscle weakness?",
+      "Do you notice radiating pain into shoulders or legs?"
+    ]
+  },
+  "rotator cuff injury": {
+    "key_symptoms": ["shoulder pain", "weakness", "limited range of motion", "pain at night", "swelling"],
+    "extra_questions": [
+      "Do you experience difficulty lifting your arm overhead?",
+      "Do you hear clicking or popping sounds in your shoulder?",
+      "Is the pain worse with specific movements?",
+      "Do you have history of trauma or repetitive overhead activity?"
+    ]
+  },
+  "knee ligament or meniscus tear": {
+    "key_symptoms": ["knee pain", "swelling", "instability", "clicking or locking", "difficulty walking"],
+    "extra_questions": [
+      "Did the pain start after an injury or trauma?",
+      "Do you notice the knee giving way or locking?",
+      "Do you experience pain during bending or twisting?",
+      "Do you have swelling or bruising around the knee?"
+    ]
+  },
+  "fracture of the hand": {
+    "key_symptoms": ["pain", "swelling", "bruising", "deformity", "limited movement"],
+    "extra_questions": [
+      "Was there a recent trauma or fall?",
+      "Do you have difficulty moving fingers or hand?",
+      "Is there visible deformity or abnormal position?",
+      "Do you experience numbness or tingling in fingers?"
+    ]
+  },
+  "fracture of the arm": {
+    "key_symptoms": ["pain", "swelling", "bruising", "deformity", "limited movement"],
+    "extra_questions": [
+      "Did the pain start after an accident or fall?",
+      "Do you have difficulty moving your arm?",
+      "Is there visible deformity or unnatural angle?",
+      "Do you feel numbness or tingling in the arm or hand?"
+    ]
+  },
+  "fracture of the shoulder": {
+    "key_symptoms": ["shoulder pain", "swelling", "deformity", "limited movement", "bruising"],
+    "extra_questions": [
+      "Did the injury occur after a fall or accident?",
+      "Do you have difficulty lifting or rotating your arm?",
+      "Is there visible deformity or abnormal shoulder shape?",
+      "Do you experience numbness or tingling in the arm or hand?"
+    ]
+  },
+  "fracture of the leg": {
+    "key_symptoms": ["leg pain", "swelling", "deformity", "difficulty walking", "bruising"],
+    "extra_questions": [
+      "Was the pain caused by trauma or accident?",
+      "Do you notice any unusual shape or angulation of the leg?",
+      "Do you experience numbness or tingling in foot or toes?",
+      "Is it difficult to bear weight on the leg?"
+    ]
+  },
+  "fracture of the foot": {
+    "key_symptoms": ["foot pain", "swelling", "bruising", "deformity", "difficulty walking"],
+    "extra_questions": [
+      "Was there recent trauma or heavy impact to the foot?",
+      "Do you have visible deformity or abnormal toe alignment?",
+      "Is it painful to put weight on the foot?",
+      "Do you notice numbness or tingling in toes?"
+    ]
+  },
+  "fracture of the vertebra": {
+    "key_symptoms": ["back pain", "spinal tenderness", "limited mobility", "deformity", "numbness or weakness in limbs"],
+    "extra_questions": [
+      "Was the pain caused by trauma or sudden movement?",
+      "Do you experience numbness or tingling in arms or legs?",
+      "Is there loss of height or spinal deformity?",
+      "Do you have difficulty walking or standing upright?"
+    ]
+  },
+  "joint pain": {
+    "key_symptoms": ["pain", "stiffness", "swelling", "reduced range of motion", "warmth in joints"],
+    "extra_questions": [
+      "Is the pain worse in the morning or after activity?",
+      "Are specific joints affected more than others?",
+      "Do you notice redness or warmth around joints?",
+      "Do you have fatigue or weakness associated with joint pain?"
+    ]
+  },
+  "bursitis": {
+    "key_symptoms": ["joint pain", "swelling", "tenderness", "limited movement", "warmth"],
+    "extra_questions": [
+      "Is the pain localized to one joint or multiple joints?",
+      "Does movement or pressure worsen the pain?",
+      "Do you notice swelling or warmth in the affected area?",
+      "Do you have history of repetitive activity or trauma?"
+    ]
+  },
+  "tendonitis": {
+    "key_symptoms": ["pain", "tenderness", "swelling", "restricted movement", "crepitus in tendon"],
+    "extra_questions": [
+      "Is the pain worse during or after activity?",
+      "Do you experience stiffness in the affected area?",
+      "Is there swelling or warmth over the tendon?",
+      "Do you have history of repetitive strain or overuse?"
+    ]
+  },
+  "diabetes": {
+    "key_symptoms": ["frequent urination", "excessive thirst", "fatigue", "blurred vision", "weight loss"],
+    "extra_questions": [
+      "Do you experience slow healing of wounds or infections?",
+      "Do you have numbness or tingling in hands or feet?",
+      "Do you have family history of diabetes?",
+      "Do you experience increased hunger or unexplained weight changes?"
+    ]
+  },
+  "gestational diabetes": {
+    "key_symptoms": ["excessive thirst", "frequent urination", "fatigue", "blurred vision", "weight changes"],
+    "extra_questions": [
+      "Are you currently pregnant?",
+      "Have you experienced unusual sugar cravings or increased appetite?",
+      "Do you have history of gestational diabetes in prior pregnancies?",
+      "Do you have family history of diabetes?"
+    ]
+  },
+  "urinary tract infection": {
+    "key_symptoms": ["painful urination", "frequent urination", "lower abdominal pain", "urinary urgency", "cloudy urine"],
+    "extra_questions": [
+      "Do you have fever or chills?",
+      "Do you notice blood in urine?",
+      "Do you experience burning sensation during urination?",
+      "Do you have history of recurrent UTIs?"
+    ]
+  },
+  "urethral disorder": {
+    "key_symptoms": ["painful urination", "discharge", "urinary frequency", "burning sensation", "urinary obstruction"],
+    "extra_questions": [
+      "Do you notice unusual discharge from the urethra?",
+      "Do you have difficulty starting or maintaining urination?",
+      "Do you experience pain in lower abdomen or pelvic area?",
+      "Do you have history of urinary infections or STDs?"
+    ]
+  },
+  "bladder disorder": {
+    "key_symptoms": ["frequent urination", "urinary urgency", "painful urination", "incontinence", "lower abdominal pain"],
+    "extra_questions": [
+      "Do you notice blood in urine?",
+      "Do you have difficulty emptying the bladder completely?",
+      "Do you experience nocturia (urination at night)?",
+      "Do you have history of bladder infections or stones?"
+    ]
+  },
+  "ovarian cyst": {
+    "key_symptoms": ["lower abdominal pain", "bloating", "irregular menstruation", "pelvic discomfort", "pain during intercourse"],
+    "extra_questions": [
+      "Do you experience sudden severe pelvic pain?",
+      "Do you notice bloating or fullness in abdomen?",
+      "Do you have irregular or heavy menstrual periods?",
+      "Do you have history of ovarian cysts?"
+    ]
+  },
+  "pcos": {
+    "key_symptoms": ["irregular periods", "excess hair growth", "acne", "weight gain", "fertility issues"],
+    "extra_questions": [
+      "Do you experience thinning hair on scalp?",
+      "Do you have insulin resistance or weight changes?",
+      "Do you experience excessive facial or body hair?",
+      "Do you have difficulty conceiving?"
+    ]
+  },
+  "endometriosis": {
+    "key_symptoms": ["pelvic pain", "painful menstruation", "pain during intercourse", "heavy menstrual bleeding", "infertility"],
+    "extra_questions": [
+      "Do you experience chronic pelvic pain outside of periods?",
+      "Is the pain worse during menstruation?",
+      "Do you have difficulty conceiving?",
+      "Do you notice gastrointestinal symptoms during menstruation?"
+    ]
+  },
+  "pregnancy": {
+    "key_symptoms": ["missed period", "nausea", "breast tenderness", "fatigue", "frequent urination"],
+    "extra_questions": [
+      "Have you taken a pregnancy test recently?",
+      "Do you experience morning sickness or food aversions?",
+      "Do you notice breast changes or tenderness?",
+      "Do you have abdominal bloating or cramping?"
+    ]
+  },
+  "threatened pregnancy": {
+    "key_symptoms": ["vaginal bleeding", "cramping", "back pain", "pelvic pressure", "spotting"],
+    "extra_questions": [
+      "Have you experienced vaginal bleeding during early pregnancy?",
+      "Do you have abdominal cramping or lower back pain?",
+      "Do you feel pelvic pressure?",
+      "Do you have history of miscarriage or complications?"
+    ]
+  },
+  "pre-eclampsia": {
+    "key_symptoms": ["high blood pressure", "proteinuria", "swelling", "headache", "vision changes"],
+    "extra_questions": [
+      "Do you experience sudden swelling of hands, face, or feet?",
+      "Do you have severe headache or visual disturbances?",
+      "Do you notice elevated blood pressure readings?",
+      "Do you have abdominal pain or nausea?"
+    ]
+  },
+  "menopause": {
+    "key_symptoms": ["hot flashes", "night sweats", "irregular periods", "vaginal dryness", "mood changes"],
+    "extra_questions": [
+      "Do you experience irregular or absent menstrual cycles?",
+      "Do you have sleep disturbances?",
+      "Do you notice vaginal dryness or discomfort?",
+      "Do you experience mood swings or irritability?"
+    ]
+  },
+  "dysmenorrhea": {
+    "key_symptoms": ["menstrual cramps", "lower abdominal pain", "back pain", "nausea", "headache"],
+    "extra_questions": [
+      "Is the pain severe or affecting daily activities?",
+      "Do you experience nausea, vomiting, or diarrhea during periods?",
+      "Do you have back or thigh pain during menstruation?",
+      "Do you notice irregular or heavy menstrual bleeding?"
+    ]
+  },
+  "hypothyroidism": {
+    "key_symptoms": ["fatigue", "weight gain", "cold intolerance", "dry skin", "constipation"],
+    "extra_questions": [
+      "Do you notice hair thinning or hair loss?",
+      "Do you feel sluggish or unusually tired?",
+      "Do you experience puffiness in the face or hands?",
+      "Have you experienced slowed heart rate or depression?"
+    ]
+  },
+  "hyperthyroidism": {
+    "key_symptoms": ["weight loss", "heat intolerance", "palpitations", "tremors", "anxiety"],
+    "extra_questions": [
+      "Do you experience increased appetite despite weight loss?",
+      "Do you have sweating or heat intolerance?",
+      "Do you notice rapid heartbeat or palpitations?",
+      "Do you have hand tremors or nervousness?"
+    ]
+  },
+  "vitamin d deficiency": {
+    "key_symptoms": ["bone pain", "muscle weakness", "fatigue", "mood changes", "frequent infections"],
+    "extra_questions": [
+      "Do you have difficulty walking or frequent falls?",
+      "Do you spend little time outdoors or have limited sun exposure?",
+      "Do you experience frequent bone or muscle aches?",
+      "Do you have history of fractures or bone weakness?"
+    ]
+  },
+  "iron deficiency anemia": {
+    "key_symptoms": ["fatigue", "pallor", "shortness of breath", "dizziness", "weakness"],
+    "extra_questions": [
+      "Do you experience heart palpitations?",
+      "Do you have brittle nails or hair loss?",
+      "Do you notice craving non-food items like ice or dirt?",
+      "Do you have heavy menstrual bleeding or blood loss?"
+    ]
+  },
+  "diabetic kidney disease": {
+    "key_symptoms": ["swelling", "fatigue", "frequent urination", "high blood pressure", "protein in urine"],
+    "extra_questions": [
+      "Do you have a history of diabetes for several years?",
+      "Do you notice foamy urine or swelling in legs/ankles?",
+      "Do you have difficulty concentrating or fatigue?",
+      "Have you had elevated creatinine or kidney function tests?"
+    ]
+  },
+  "diabetic peripheral neuropathy": {
+    "key_symptoms": ["numbness", "tingling", "burning sensation", "pain in extremities", "loss of sensation"],
+    "extra_questions": [
+      "Do you experience foot ulcers or infections?",
+      "Do you feel burning or stabbing pain in hands or feet?",
+      "Do you notice balance problems or frequent falls?",
+      "Do you have history of long-standing diabetes?"
+    ]
+  },
+  "glaucoma": {
+    "key_symptoms": ["eye pain", "blurred vision", "tunnel vision", "headache", "nausea"],
+    "extra_questions": [
+      "Do you experience gradual vision loss?",
+      "Do you have halos around lights?",
+      "Do you notice increased intraocular pressure or eye redness?",
+      "Do you have family history of glaucoma?"
+    ]
+  },
+  "cataract": {
+    "key_symptoms": ["blurred vision", "difficulty seeing at night", "sensitivity to light", "faded colors", "double vision"],
+    "extra_questions": [
+      "Do you experience cloudy or foggy vision?",
+      "Is your vision worse in bright light or glare?",
+      "Do you notice changes in color perception?",
+      "Do you have difficulty reading or driving at night?"
+    ]
+  },
+  "diabetic retinopathy": {
+    "key_symptoms": ["blurred vision", "floaters", "vision loss", "dark spots", "difficulty seeing colors"],
+    "extra_questions": [
+      "Do you have long-standing diabetes?",
+      "Do you notice sudden changes in vision?",
+      "Do you see floating spots or dark areas in your vision?",
+      "Have you had previous eye complications due to diabetes?"
+    ]
+  },
+  "retinopathy due to high blood pressure": {
+    "key_symptoms": ["blurred vision", "vision changes", "headache", "eye swelling", "floaters"],
+    "extra_questions": [
+      "Do you have a history of hypertension?",
+      "Do you notice vision changes during blood pressure spikes?",
+      "Do you experience headaches or eye discomfort?",
+      "Do you have any known vascular issues in the eyes?"
+    ]
+  },
+  "corneal disorder": {
+    "key_symptoms": ["eye pain", "blurred vision", "redness", "light sensitivity", "tearing"],
+    "extra_questions": [
+      "Do you have a history of eye injury or infection?",
+      "Do you experience foreign body sensation in the eye?",
+      "Is your vision blurred or hazy?",
+      "Do you notice redness or swelling around the cornea?"
+    ]
+  },
+  "corneal abrasion": {
+    "key_symptoms": ["eye pain", "tearing", "redness", "sensitivity to light", "feeling of something in eye"],
+    "extra_questions": [
+      "Have you experienced trauma or foreign object in the eye?",
+      "Do you have difficulty opening your eye due to pain?",
+      "Do you notice blurred or decreased vision?",
+      "Do you have a history of recurrent corneal injuries?"
+    ]
+  },
+  "amblyopia": {
+    "key_symptoms": ["poor vision in one eye", "eye misalignment", "squinting", "depth perception problems", "lazy eye"],
+    "extra_questions": [
+      "Do you have one eye weaker than the other?",
+      "Do you notice double vision or eye strain?",
+      "Do you have a history of strabismus?",
+      "Do you experience difficulty in depth perception?"
+    ]
+  },
+  "optic neuritis": {
+    "key_symptoms": ["eye pain", "vision loss", "color vision changes", "blurring", "flashing lights"],
+    "extra_questions": [
+      "Do you have pain with eye movement?",
+      "Do you experience sudden vision changes?",
+      "Do you notice loss of color vision?",
+      "Do you have history of autoimmune or demyelinating disorders?"
+    ]
+  },
+  "acne": {
+    "key_symptoms": ["pimples", "blackheads", "whiteheads", "oily skin", "redness or inflammation"],
+    "extra_questions": [
+      "Do you experience flare-ups during hormonal changes?",
+      "Do you notice cystic or painful lesions?",
+      "Do you have scarring from previous acne?",
+      "Do you use oily skincare or cosmetic products?"
+    ]
+  },
+  "seborrheic dermatitis": {
+    "key_symptoms": ["red skin", "scaly patches", "itching", "flaky skin", "greasy appearance"],
+    "extra_questions": [
+      "Do you notice dandruff or scalp flaking?",
+      "Is itching worse in winter or stressful periods?",
+      "Do you have redness around nose, eyebrows, or ears?",
+      "Do topical creams or shampoos help relieve symptoms?"
+    ]
+  },
+  "psoriasis": {
+    "key_symptoms": ["red patches", "scaly skin", "itching", "thickened skin", "painful lesions"],
+    "extra_questions": [
+      "Do you have joint pain or stiffness?",
+      "Is there family history of psoriasis?",
+      "Do stress or infections trigger flare-ups?",
+      "Do you experience nail changes like pitting or discoloration?"
+    ]
+  },
+  "fungal infection of the skin": {
+    "key_symptoms": ["itching", "red or scaly patches", "ring-shaped lesions", "cracking skin", "blisters"],
+    "extra_questions": [
+      "Is the infection spreading or persistent?",
+      "Do you notice lesions in warm, moist areas?",
+      "Have you tried antifungal creams before?",
+      "Do you have nail or scalp involvement?"
+    ]
+  },
+  "viral warts": {
+    "key_symptoms": ["raised bumps", "rough surface", "discoloration", "small clusters", "itching"],
+    "extra_questions": [
+      "Do you have warts on hands, feet, or genital area?",
+      "Are they painful or bleeding?",
+      "Have you noticed new growths appearing frequently?",
+      "Do you have a history of immune suppression?"
+    ]
+  },
+  "melanoma": {
+    "key_symptoms": ["dark mole", "irregular borders", "color variation", "rapid growth", "itching or bleeding"],
+    "extra_questions": [
+      "Do you have a mole changing in size or color?",
+      "Do you notice irregular borders or asymmetry?",
+      "Have you had excessive sun exposure?",
+      "Do you have family history of skin cancer?"
+    ]
+  },
+  "malaria": {
+    "key_symptoms": ["fever", "chills", "sweating", "headache", "fatigue"],
+    "extra_questions": [
+      "Have you recently traveled to a malaria-endemic area?",
+      "Do you have recurring fever episodes?",
+      "Do you experience nausea or vomiting?",
+      "Do you notice anemia or jaundice?"
+    ]
+  },
+  "dengue fever": {
+    "key_symptoms": ["high fever", "severe headache", "joint pain", "muscle pain", "rash"],
+    "extra_questions": [
+      "Do you experience retro-orbital eye pain?",
+      "Do you have bleeding gums or nosebleeds?",
+      "Have you recently been bitten by mosquitoes?",
+      "Do you notice severe fatigue or weakness?"
+    ]
+  },
+  "hiv infection": {
+    "key_symptoms": ["fever", "fatigue", "swollen lymph nodes", "sore throat", "rash"],
+    "extra_questions": [
+      "Do you have recent high-risk exposures?",
+      "Do you experience night sweats or weight loss?",
+      "Have you noticed recurrent infections?",
+      "Do you have oral or genital ulcers?"
+    ]
+  },
+  "tuberculosis": {
+    "key_symptoms": ["persistent cough", "weight loss", "fever", "night sweats", "fatigue"],
+    "extra_questions": [
+      "Do you have history of exposure to TB patients?",
+      "Do you cough up blood or phlegm?",
+      "Have you had recent travel to endemic areas?",
+      "Do you have chest pain or shortness of breath?"
+    ]
+  },
+  "syphilis": {
+    "key_symptoms": ["sores", "rash", "fever", "swollen lymph nodes", "fatigue"],
+    "extra_questions": [
+      "Do you have painless genital sores?",
+      "Do you notice rash on palms or soles?",
+      "Do you have history of unprotected sexual contact?",
+      "Do you experience fatigue or muscle aches?"
+    ]
+  },
+  "chlamydia": {
+    "key_symptoms": ["discharge", "painful urination", "lower abdominal pain", "bleeding between periods", "swelling"],
+    "extra_questions": [
+      "Do you experience genital discharge?",
+      "Is urination painful or burning?",
+      "Do you have pelvic pain or discomfort?",
+      "Do you have history of unprotected sexual activity?"
+    ]
+  },
+  "gonorrhea": {
+    "key_symptoms": ["discharge", "painful urination", "swelling", "sore throat", "rectal discomfort"],
+    "extra_questions": [
+      "Do you notice unusual genital discharge?",
+      "Is urination painful or difficult?",
+      "Do you experience throat or rectal symptoms?",
+      "Do you have history of recent sexual exposure?"
+    ]
+  },
+  "hpv": {
+    "key_symptoms": ["genital warts", "itching", "skin growths", "lesions", "discoloration"],
+    "extra_questions": [
+      "Do you have visible warts or growths in genital area?",
+      "Do you experience itching or discomfort?",
+      "Have you been vaccinated against HPV?",
+      "Do you notice changes in skin color or texture around warts?"
+    ]
+  },
+  "obesity": {
+    "key_symptoms": ["excess weight", "fatigue", "shortness of breath", "joint pain", "snoring"],
+    "extra_questions": [
+      "Do you have difficulty performing physical activities?",
+      "Do you experience sleep apnea or snoring?",
+      "Do you notice metabolic issues like high cholesterol or blood sugar?",
+      "Do you have family history of obesity?"
+    ]
+  },
+  "hypertension": {
+    "key_symptoms": ["headache", "dizziness", "fatigue", "blurred vision", "chest pain"],
+    "extra_questions": [
+      "Do you have consistently high blood pressure readings?",
+      "Do you experience shortness of breath or palpitations?",
+      "Do you have family history of hypertension?",
+      "Do you experience nosebleeds or swelling in extremities?"
+    ]
+  },
+  "hyperlipidemia": {
+    "key_symptoms": ["xanthomas", "fatigue", "chest discomfort", "heart disease", "pancreatitis"],
+    "extra_questions": [
+      "Do you have family history of high cholesterol or heart disease?",
+      "Do you experience chest pain or discomfort?",
+      "Have you had recent blood lipid tests?",
+      "Do you notice deposits under the skin or around eyes?"
+    ]
+  },
+  "chronic kidney disease": {
+    "key_symptoms": ["fatigue", "swelling", "urinary changes", "nausea", "hypertension"],
+    "extra_questions": [
+      "Do you have a history of diabetes or hypertension?",
+      "Do you notice swelling in legs, feet, or face?",
+      "Do you experience nausea or loss of appetite?",
+      "Do you have protein in urine or decreased urine output?"
+    ]
+  },
+  "kidney stone": {
+    "key_symptoms": ["severe flank pain", "hematuria", "nausea", "vomiting", "urinary urgency"],
+    "extra_questions": [
+      "Do you experience sudden severe pain in the back or sides?",
+      "Do you notice blood in your urine?",
+      "Do you have nausea or vomiting during pain episodes?",
+      "Do you have history of recurrent stones?"
+    ]
+  },
+  "kidney failure": {
+    "key_symptoms": ["fatigue", "swelling", "reduced urine output", "nausea", "shortness of breath"],
+    "extra_questions": [
+      "Do you have history of chronic kidney disease?",
+      "Do you notice swelling in legs, ankles, or face?",
+      "Do you experience confusion or difficulty concentrating?",
+      "Do you have high blood pressure or electrolyte imbalances?"
+    ]
+  },
+  "heart block": {
+    "key_symptoms": ["bradycardia", "dizziness", "fainting", "chest pain", "palpitations"],
+    "extra_questions": [
+      "Do you experience fainting or near-fainting episodes?",
+      "Do you have history of heart disease or arrhythmias?",
+      "Do you notice irregular heartbeat or palpitations?",
+      "Do you experience shortness of breath or fatigue?"
+    ]
+  },
+  "pulmonary embolism": {
+    "key_symptoms": ["sudden shortness of breath", "chest pain", "coughing blood", "rapid heartbeat", "leg swelling"],
+    "extra_questions": [
+      "Do you have history of recent surgery or prolonged immobilization?",
+      "Do you notice leg swelling or tenderness?",
+      "Is chest pain sharp and worsens with breathing?",
+      "Do you have rapid breathing or feeling of anxiety?"
+    ]
+  },
+  "sepsis": {
+    "key_symptoms": ["fever", "chills", "rapid heart rate", "confusion", "shortness of breath"],
+    "extra_questions": [
+      "Do you have a recent infection or wound?",
+      "Do you experience low blood pressure or dizziness?",
+      "Is there rapid breathing or difficulty breathing?",
+      "Do you notice skin mottling or unusual discoloration?"
+    ]
+  }
 }
