@@ -39,17 +39,25 @@ The system can:
 ## 📁 Repository Structure
 
 MediScan/
+
 ├── app/ # Streamlit frontend
 
 │ └── main_app.py
 
 ├── models/ # Saved model & question rules (ignored in repo)
+
 ├── utils/ # Preprocessing and feature engineering
+
 ├── data/ # Raw/processed datasets (keep out of repo)
+
 ├── train_model.py # ML training pipeline
+
 ├── requirements.txt # Dependencies
+
 ├── README.md # Documentation
+
 ├── .gitignore # Ignore rules
+
 └── LICENSE # Optional license
 
 
@@ -263,4 +271,5 @@ Datasets
 Model binaries
 
 Virtual environments
+
 
