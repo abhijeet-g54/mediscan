@@ -68,31 +68,35 @@ MediScan/
 > **These commands use Windows PowerShell.**  
 > macOS/Linux users can use equivalent shell commands.
 
+
 ### Clone the repository
 
 git clone https://github.com/abhijeet-g54/mediscan
 cd mediscan
 
+
 ### Setup & Environment
 
 Create a Virtual Environment
-
 python -m venv venv
 .\venv\Scripts\Activate.ps1
-
 If PowerShell blocks execution
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
 
 ### Install Dependencies
 3️⃣ Install Required Packages
 pip install --upgrade pip
 pip install -r requirements.txt
 
+
+
 Notes
 
 If xgboost or shap fail to install → remove them temporarily.
-
 The app works without SHAP (you only lose explanations).
+
+
 
 ### Dataset Format
 Required Structure (Wide Format)
@@ -102,23 +106,14 @@ fever,cough,headache,abdominal_pain,sore_throat,...,Disease
 Requirements
 
 Each symptom column = 0 or 1
-
 Disease = target label
-
 Each row = one training sample
-
 Place your dataset here
 data/processed/disease_symptom_dataset.csv
-
-
 or:
-
 data/raw/disease_symptom_dataset.csv
-
 Row-Wise Symptom Format (List Input)
-
 If your data looks like:
-
 ["fever", "cough", "fatigue"]
 
 
@@ -126,43 +121,34 @@ Convert it using:
 
 utils/data_preprocessing.py
 
+---
+
 ## Train the Model
+
 
 Run Training
 python train_model.py
-
 What Happens During Training
-
 Loads processed dataset
-
 Encodes disease labels
-
 Trains:
-
 XGBoost
-
 RandomForest
-
 Builds a soft-voting ensemble
-
 Evaluates model
-
 Saves trained model to:
-
 models/symptom_disease_model.pkl
-
 Model File Contains
-
 model — trained ensemble
-
 label_encoder
-
 features — canonical symptom list
-
 Additional Output
 data/processed/feature_list.txt
 
+---
+
 ## Run the Application
+
 Launch Streamlit App
 python -m streamlit run app/main_app.py
 
@@ -172,104 +158,74 @@ http://localhost:8501
 App Workflow
 
 Enter symptoms
-
 Add duration & intensity
-
 Click Analyze
-
 (If needed) answer clarifying question
 
 View:
-
 Top-3 probable conditions
-
 Confidence scores
-
 Triage warnings
-
 Downloadable summary
 
+---
+
 ## Development Notes
+
 utils/feature_engineering.py
-
 Contains:
-
 Symptom normalization
-
 Fuzzy matching
-
 Feature-vector builder
-
 models/clarifying_questions.json
-
 Defines:
-
 Standard clarifiers
-
 Targeted clarifiers
-
 app/main_app.py
-
 Expects:
-
 Trained model
-
 Label encoder
-
 Feature list
 
 ⚠️ Ensure consistent symptom names across dataset, preprocessing, and UI.
 
+---
+
 ## Improving Model Accuracy
+
 Recommended Enhancements
-
 Larger, cleaner dataset
-
 Add meta-features (age, sex, comorbidities)
-
 Handle class imbalance (weights / SMOTE)
-
 Interaction features
-
 Hyperparameter tuning (RandomizedSearchCV)
-
 Active learning from user feedback
-
 Rule-based expert red-flag checks
 
+---
+
 ## Security, Privacy & Ethics
+
 Guidelines
-
 Do not store PII
-
 Display a clear medical disclaimer
-
 Encrypt stored feedback
-
 Respect dataset licenses
-
 Sanitize external data inputs
 
+---
+
 ## Contributing
+
 Contribution Workflow
-
 Fork the repository
-
 Create a feature branch:
-
 git checkout -b feature/your-feature
-
-
 Commit & push
-
 Open a Pull Request
-
-Avoid Committing
-
+Avoid Committing-
 Datasets
-
 Model binaries
-
 Virtual environments
 
 
