@@ -1,247 +1,194 @@
-# train_model.py
+#!/usr/bin/env python3
 """
-Robust training script for MediScan.
+train_model.py
 
-- Auto-detects dataset format:
-    * TEXT mode: expects 'Symptom' (text) + 'Disease'
-    * WIDE mode: expects 'Disease' and many symptom columns (one column per symptom)
-- Trains an XGBoost classifier (hist) when available; otherwise falls back to HistGradientBoostingClassifier.
-- Saves a single package: models/symptom_disease_model.pkl with keys:
-    { "model", "label_encoder", "vectorizer" or None, "features" or None, "format" }
-- Safe defaults for modest RAM. Adjust params at top if needed.
+Train a one-hot symptom -> disease classifier in "wide" CSV format:
+
+CSV format expected (wide, binary symptom columns):
+  Disease, symptom A, symptom B, symptom C, ...
+  Malaria, 1,0,1,...
+  Flu,     1,1,0,...
+
+What this script does:
+- Loads the CSV (default: data/processed/disease_symptom_dataset_small.csv)
+- Uses all columns except "Disease" as binary symptom features (exact column names preserved)
+- Drops rare disease classes with 1 sample (because stratified split needs >=2 samples per class)
+- Trains an XGBoost classifier (falls back to RandomForest if XGBoost isn't available)
+- Saves a bundled model package (joblib) to models/symptom_disease_model.pkl containing:
+    { "model": model, "label_encoder": le, "symptoms": symptoms_list }
+- Also saves models/symptoms_list.json and models/label_encoder.pkl for convenience
+- Prints basic metrics
+
+Usage:
+    python train_model.py --data data/processed/disease_symptom_dataset.csv
+
+Notes:
+- Training uses the binary symptom columns directly. Intensity/duration multipliers are applied
+  at inference time in the app (so they are not part of training features here).
+- The script is conservative with memory: XGBoost is configured to use single thread by default.
 """
 
 import os
-import sys
-import time
+import json
+import argparse
 from pathlib import Path
-import joblib
-import pandas as pd
+
 import numpy as np
-
-from sklearn.model_selection import train_test_split
+import pandas as pd
 from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score
+import joblib
 
-# try xgboost
-try:
-    from xgboost import XGBClassifier
-    XGB_AVAILABLE = True
-except Exception:
-    XGB_AVAILABLE = False
-
-# fallback
-try:
-    from sklearn.ensemble import HistGradientBoostingClassifier
-    HGB_AVAILABLE = True
-except Exception:
-    HGB_AVAILABLE = False
-
-# -------------------------
-# Configuration
-# -------------------------
-DATA_PATH = Path("data/processed/disease_symptom_dataset.csv")   
-MODEL_OUT = Path("models/symptom_disease_model.pkl")
 RANDOM_STATE = 42
-TEST_SIZE = 0.20
+MODEL_DIR = Path("models")
+DEFAULT_DATA_PATH = Path("data/processed/disease_symptom_dataset_small.csv")
 
-# TF-IDF settings (used when text mode)
-TFIDF_MAX_FEATURES = 5000
-TFIDF_NGRAM_RANGE = (1, 2)
-TFIDF_MIN_DF = 2
-
-# XGBoost / HGB settings (conservative defaults)
-XGB_PARAMS = {
-    "objective": "multi:softprob",
-    "eval_metric": "mlogloss",
-    "tree_method": "hist",
-    "n_estimators": 120,
-    "max_depth": 5,
-    "learning_rate": 0.08,
-    "subsample": 0.8,
-    "colsample_bytree": 0.8,
-    "random_state": RANDOM_STATE,
-    "verbosity": 0,
-    "n_jobs": 4,   # adjust down to 1 or 2 if memory issues
-}
-
-HGB_PARAMS = {
-    "max_iter": 200,
-    "max_depth": 10,
-    "random_state": RANDOM_STATE,
-}
-
-# -------------------------
-# Helpers
-# -------------------------
-def die(msg):
-    print("ERROR:", msg)
-    sys.exit(1)
 
 def ensure_dirs():
-    MODEL_OUT.parent.mkdir(parents=True, exist_ok=True)
+    MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
-def load_data(path: Path):
+
+def load_data(path):
+    path = Path(path)
     if not path.exists():
-        die(f"Processed dataset not found at: {path}\nPlace your processed CSV there (or set DATA_PATH correctly).")
-    print(f"Loading dataset: {path}")
+        raise FileNotFoundError(f"Dataset not found: {path}")
     df = pd.read_csv(path)
-    print(f"Rows: {len(df):,}  Columns: {len(df.columns)}")
+    if "Disease" not in df.columns:
+        # Some datasets might use lowercase 'disease'
+        lowcols = [c.lower() for c in df.columns]
+        if "disease" in lowcols:
+            # rename that column back to "Disease"
+            real = df.columns[lowcols.index("disease")]
+            df = df.rename(columns={real: "Disease"})
+        else:
+            raise ValueError("Dataset must include a 'Disease' column.")
+
+    # Ensure the Disease column is string
+    df["Disease"] = df["Disease"].astype(str).str.strip()
+
+    # Symptoms are all other columns
+    symptom_cols = [c for c in df.columns if c != "Disease"]
+    if len(symptom_cols) == 0:
+        raise ValueError("No symptom columns found. Dataset must have columns besides 'Disease'.")
+
+    # Ensure symptom columns are numeric (0/1). Try to coerce.
+    df[symptom_cols] = df[symptom_cols].apply(pd.to_numeric, errors="coerce").fillna(0).astype(int)
+
+    return df, symptom_cols
+
+
+def drop_rare_classes(df, min_count=2):
+    counts = df["Disease"].value_counts()
+    rare = counts[counts < min_count].index.tolist()
+    if len(rare) > 0:
+        before = len(df)
+        df = df[~df["Disease"].isin(rare)].reset_index(drop=True)
+        after = len(df)
+        print(f"⚠️ Dropped {len(rare)} rare classes (count < {min_count}). Rows: {before} -> {after}")
     return df
 
-def detect_format(df: pd.DataFrame):
-    # If single text column 'Symptom' exists -> text mode
-    if "Symptom" in df.columns and "Disease" in df.columns:
-        return "text"
-    # Otherwise, if 'Disease' exists and at least one other column -> wide
-    if "Disease" in df.columns:
-        # treat as wide if more than 2 columns (Disease + symptom columns)
-        if len(df.columns) >= 3:
-            return "wide"
-    return None
 
-# -------------------------
-# Text pipeline
-# -------------------------
-def train_text_pipeline(df: pd.DataFrame):
-    from sklearn.feature_extraction.text import TfidfVectorizer
-
-    # ensure columns
-    if "Symptom" not in df.columns or "Disease" not in df.columns:
-        die("Text mode requires 'Symptom' and 'Disease' columns in the CSV.")
-
-    df = df.dropna(subset=["Symptom", "Disease"]).reset_index(drop=True)
-
-    texts = df["Symptom"].astype(str)
-    labels = df["Disease"].astype(str)
-
-    print("Building TF-IDF...")
-    vectorizer = TfidfVectorizer(
-        max_features=TFIDF_MAX_FEATURES,
-        ngram_range=TFIDF_NGRAM_RANGE,
-        min_df=TFIDF_MIN_DF,
-        stop_words="english"
-    )
-    X = vectorizer.fit_transform(texts)
-    print("TF-IDF shape:", X.shape)
-
-    le = LabelEncoder()
-    y = le.fit_transform(labels)
-    print("Number of classes:", len(le.classes_))
-
-    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE, stratify=y)
-    print("Train/Val split:", X_train.shape[0], X_val.shape[0])
-
-    model = train_model(X_train, y_train, X_val, y_val)
-
-    # evaluate
-    evaluate_model(model, X_val, y_val, le)
-
-    # save package
-    package = {
-        "model": model,
-        "label_encoder": le,
-        "vectorizer": vectorizer,
-        "features": None,
-        "format": "text"
-    }
-    joblib.dump(package, MODEL_OUT)
-    print("Saved model package to:", MODEL_OUT)
-
-# -------------------------
-# Wide pipeline
-# -------------------------
-def train_wide_pipeline(df: pd.DataFrame):
-    # expects 'Disease' column and many symptom columns (binary/0-1/numeric)
-    if "Disease" not in df.columns:
-        die("Wide mode requires 'Disease' column.")
-
-    df = df.dropna(subset=["Disease"]).reset_index(drop=True)
-
-    # features are all columns except Disease
-    features = [c for c in df.columns if c != "Disease"]
-    if not features:
-        die("No symptom feature columns found for wide format.")
-
-    print(f"Detected {len(features)} feature columns.")
-
-    # coerce to numeric 0/1
-    X_df = df[features].fillna(0)
-    X_df = X_df.apply(pd.to_numeric, errors="coerce").fillna(0)
-    X = X_df.values
-    y_labels = df["Disease"].astype(str).values
-
-    le = LabelEncoder()
-    y = le.fit_transform(y_labels)
-    print("Number of classes:", len(le.classes_))
-
-    # train/test split
-    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE, stratify=y)
-    print("Train/Val split:", X_train.shape[0], X_val.shape[0])
-
-    model = train_model(X_train, y_train, X_val, y_val)
-
-    evaluate_model(model, X_val, y_val, le)
-
-    package = {
-        "model": model,
-        "label_encoder": le,
-        "vectorizer": None,
-        "features": features,
-        "format": "wide"
-    }
-    joblib.dump(package, MODEL_OUT)
-    print("Saved model package to:", MODEL_OUT)
-
-# -------------------------
-# Train model helper
-# -------------------------
-def train_model(X_train, y_train, X_val, y_val):
-    # prefer XGBoost if available
-    if XGB_AVAILABLE:
-        print("Training XGBoost (hist) ...")
-        model = XGBClassifier(**XGB_PARAMS)
-        # safe fit without early_stopping arguments (avoid API mismatch)
-        model.fit(X_train, y_train)
-        return model
-    elif HGB_AVAILABLE:
-        print("XGBoost not available — training HistGradientBoostingClassifier ...")
-        from sklearn.ensemble import HistGradientBoostingClassifier
-        model = HistGradientBoostingClassifier(**HGB_PARAMS)
-        model.fit(X_train, y_train)
-        return model
-    else:
-        die("No suitable model library found (install xgboost or upgrade scikit-learn).")
-
-# -------------------------
-# Evaluate helper
-# -------------------------
-def evaluate_model(model, X_val, y_val, label_encoder):
+def train_xgb(X_train, y_train, X_val, y_val):
     try:
-        preds = model.predict(X_val)
-        acc = accuracy_score(y_val, preds)
-        print(f"Validation Accuracy: {acc:.4f}")
-        print("Classification Report (top classes):")
-        # print full report (may be large)
-        print(classification_report(y_val, preds, target_names=label_encoder.classes_, zero_division=0))
+        import xgboost as xgb
+        # Using conservative settings for low-memory environments
+        clf = xgb.XGBClassifier(
+            objective="multi:softprob",
+            use_label_encoder=False,
+            eval_metric="mlogloss",
+            n_estimators=200,
+            max_depth=6,
+            learning_rate=0.1,
+            subsample=0.8,
+            colsample_bytree=0.8,
+            random_state=RANDOM_STATE,
+            n_jobs=-1,            # keep to 1 to reduce memory usage
+            tree_method="hist",  # faster & lower memory than exact
+        )
+        clf.fit(X_train, y_train, eval_set=[(X_val, y_val)], verbose=10)
+        return clf
     except Exception as e:
-        print("Warning: evaluation failed:", e)
+        print("⚠️ XGBoost not available or failed to initialize. Falling back to RandomForest.")
+        print("   Reason:", e)
+        from sklearn.ensemble import RandomForestClassifier
+        clf = RandomForestClassifier(n_estimators=200, random_state=RANDOM_STATE, n_jobs=1)
+        clf.fit(X_train, y_train)
+        return clf
 
-# -------------------------
-# Main
-# -------------------------
-def main():
+
+def main(args):
     ensure_dirs()
-    df = load_data(DATA_PATH)
-    fmt = detect_format(df)
-    if fmt is None:
-        die("Unable to detect dataset format. Ensure 'Disease' column exists and either a 'Symptom' text column (text mode) or many symptom columns (wide mode).")
-    print("Detected dataset format:", fmt)
+    print("Loading data...")
+    df, symptom_cols = load_data(args.data)
 
-    if fmt == "text":
-        train_text_pipeline(df)
-    else:
-        train_wide_pipeline(df)
+    print(f"Found {len(symptom_cols)} symptom columns.")
+    print("Dropping rare classes (count < 2) to allow stratified split...")
+    df = drop_rare_classes(df, min_count=2)
+
+    # Build feature matrix and labels
+    X = df[symptom_cols].values.astype(np.float32)
+    y = df["Disease"].values
+
+    # Label encode
+    le = LabelEncoder()
+    y_enc = le.fit_transform(y)
+    n_classes = len(le.classes_)
+    print(f"Number of classes: {n_classes}")
+
+    # Train/test split with stratify
+    try:
+        X_train, X_val, y_train, y_val = train_test_split(
+            X, y_enc, test_size=0.2, random_state=RANDOM_STATE, stratify=y_enc
+        )
+    except ValueError as e:
+        # fallback: if stratify fails because of low counts, do a simple split
+        print("⚠️ Stratified split failed:", e)
+        print("-> Performing non-stratified random split.")
+        X_train, X_val, y_train, y_val = train_test_split(
+            X, y_enc, test_size=0.2, random_state=RANDOM_STATE, stratify=None
+        )
+
+    print("Training model (this may take a minute)...")
+    model = train_xgb(X_train, y_train, X_val, y_val)
+
+    # Evaluate
+    print("Evaluating on validation set...")
+    y_pred = model.predict(X_val)
+    acc = accuracy_score(y_val, y_pred)
+    print(f"Validation Accuracy: {acc:.4f}")
+    print("Classification report (top 10 classes shown):")
+    try:
+        report = classification_report(y_val, y_pred, target_names=le.inverse_transform(np.unique(y_val)))
+        print(report)
+    except Exception:
+        # fallback printing
+        print(classification_report(y_val, y_pred))
+
+    # Save artifacts
+    bundle = {
+        "model": model,
+        "label_encoder": le,
+        "symptoms": symptom_cols,
+    }
+
+    model_path = MODEL_DIR / "symptom_disease_model.pkl"
+    label_path = MODEL_DIR / "label_encoder.pkl"
+    symptoms_json = MODEL_DIR / "symptoms_list.json"
+
+    print(f"Saving model bundle to: {model_path}")
+    joblib.dump(bundle, model_path, compress=3)
+    # also save label encoder and symptom list independently
+    joblib.dump(le, label_path)
+    with open(symptoms_json, "w", encoding="utf-8") as f:
+        json.dump(symptom_cols, f, ensure_ascii=False, indent=2)
+
+    print("All done.")
+    print(f"Saved files:\n - {model_path}\n - {label_path}\n - {symptoms_json}")
+
 
 if __name__ == "__main__":
-    main()
+    p = argparse.ArgumentParser(description="Train one-hot symptom -> disease model (wide CSV format).")
+    p.add_argument("--data", type=str, default=str(DEFAULT_DATA_PATH), help="Path to wide-format CSV dataset.")
+    args = p.parse_args()
+    main(args)
