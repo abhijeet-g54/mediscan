@@ -40,7 +40,9 @@ The system can:
 
 MediScan/
 ├── app/ # Streamlit frontend
+
 │ └── main_app.py
+
 ├── models/ # Saved model & question rules (ignored in repo)
 ├── utils/ # Preprocessing and feature engineering
 ├── data/ # Raw/processed datasets (keep out of repo)
@@ -261,3 +263,4 @@ Datasets
 Model binaries
 
 Virtual environments
+
