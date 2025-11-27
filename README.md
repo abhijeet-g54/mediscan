@@ -11,7 +11,6 @@ The system can:
 - Ask clarifying questions  
 - Display confidence scores  
 - Show safety/triage warnings  
-- Generate downloadable summaries  
 
 ---
 
@@ -227,5 +226,6 @@ Avoid Committing-
 Datasets
 Model binaries
 Virtual environments
+
 
 
