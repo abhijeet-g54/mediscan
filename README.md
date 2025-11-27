@@ -21,7 +21,6 @@ The system can:
 - **Model training pipeline** → outputs `models/symptom_disease_model.pkl`
 - **Clarifying-question rules** (`models/clarifying_questions.json`)
 - **Optional SHAP-based explanations**
-- **Local session feedback + downloadable reports**
 
 ---
 
@@ -226,6 +225,7 @@ Avoid Committing-
 Datasets
 Model binaries
 Virtual environments
+
 
 
 
